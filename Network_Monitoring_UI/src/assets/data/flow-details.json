@@ -1,0 +1,6 @@
+{
+    "data": {
+		"eth_type": "0x800",
+		"ip_protocol": "0x6"
+	}
+}

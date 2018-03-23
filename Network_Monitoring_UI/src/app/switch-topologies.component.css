@@ -1,0 +1,17 @@
+.layout-border {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.center {
+	text-align: center;
+}
+
+.margin-10 {
+	margin: 10px;
+}
+
+.margin-15 {
+	margin: 15px;
+}

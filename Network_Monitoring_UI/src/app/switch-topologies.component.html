@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form class="form-horizontal layout-border">
+        <div class="form-group">
+          <label for="name" class="col-md-2">Host IP</label>
+          <div class="col-md-3">
+            <input type="text" class="form-control" id="ip" required [(ngModel)]="controller.ip" name="ip">
+          </div>
+
+          <label for="port" class="col-md-1">Port</label>
+          <div class="col-md-2">
+            <input type="text" class="form-control" id="port" required [(ngModel)]="controller.port" name="port">
+          </div>
+
+          <label for="uri" class="col-md-1">URI</label>
+          <div class="col-md-3">
+            <input type="text" class="form-control" id="uri" required [(ngModel)]="controller.uri" name="uri">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="uname" class="col-md-2">Username</label>
+          <div class="col-md-3">
+            <input type="text" class="form-control" id="uname" required [(ngModel)]="controller.uname" name="uname">
+          </div>
+    
+          <label for="passwd" class="col-md-1">Password</label>
+          <div class="col-md-3">
+            <input type="password" class="form-control" id="passwd" required [(ngModel)]="controller.passwd" name="passwd">
+          </div>
+          
+          <div class="col-md-3">
+            <button type="button" class="btn btn-default" (click)="getSwitchTopologies()">Apply</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">&nbsp;</div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <form class="layout-border">
+        <div class="form-group">
+          <label for="switch">Switch Topology</label>
+          <ngTree #treeNo1 [treeData]="treeData" [treeConfig]="treeConfig"></ngTree>
+        </div>
+      </form>
+
+      <div>&nbsp;</div>
+      <div *ngIf="selectedSwitch && selectedFlow" class="layout-border">
+        <h4>Flow Details</h4>
+        <label>Switch ID: </label><span> {{selectedSwitch}}</span><br>
+        <label>Ethernet Type: </label><span> {{flowDetails.Ethernet_Type}}</span><br>
+        <label>IP Protocol: </label><span> {{flowDetails.IP_Protocol}}</span><br>
+		<label>Action Type: </label><span> {{flowDetails.Controller_Action}}</span><br>
+		<label>Ethernet Source: </label><span> {{flowDetails.Ethernet_Source}}</span><br>
+		<label>Ethernet Dest: </label><span> {{flowDetails.Ethernet_Dest}}</span><br>
+		<label>IP Source: </label><span> {{flowDetails.IP_Source}}</span><br>
+		<label>IP Dest: </label><span> {{flowDetails.IP_Dest}}</span><br>
+		<label>IN Port: </label><span> {{flowDetails.In_Port}}</span><br>
+      </div>
+    </div>
+
+    <div class="col-md-8 layout-border">
+		<img width="760" height="300" [src] = "'data:image/png;base64,'+topology"/>
+		<div class="margin-15 center"><button type="button" class="btn btn-default" (click)="getFlowMetrics()">Show Metrics</button></div>
+		<div class="row">
+			<div class="col-md-6" *ngIf="flowMetrics.DROP_METRICS">
+				<h4>Drop Metrics</h4>
+				<label>Packet Count: </label><span> {{flowMetrics.DROP_METRICS.Drop_Packet_Count}}</span><br>
+				<label>Byte Count: </label><span> {{flowMetrics.DROP_METRICS.Drop_Byte_Count}}</span><br>
+				<label>Duration Sec: </label><span> {{flowMetrics.DROP_METRICS.Drop_Duration_Seconds}}</span><br>
+				<label>Duration NSec: </label><span> {{flowMetrics.DROP_METRICS.Drop_Duration_Nano_Seconds}}</span><br>
+			</div>
+			<div class="col-md-6" *ngIf="flowMetrics.OUTPUT_METRICS">
+				<h4>Output Metrics</h4>
+				<label>Packet Count: </label><span> {{flowMetrics.OUTPUT_METRICS.Packet_Count}}</span><br>
+				<label>Byte Count: </label><span> {{flowMetrics.OUTPUT_METRICS.Byte_Count}}</span><br>
+				<label>Duration Sec: </label><span> {{flowMetrics.OUTPUT_METRICS.Duration_Seconds}}</span><br>
+				<label>Duration NSec: </label><span> {{flowMetrics.OUTPUT_METRICS.Duration_Nano_Seconds}}</span><br>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
