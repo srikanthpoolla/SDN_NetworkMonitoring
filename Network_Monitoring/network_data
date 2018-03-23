@@ -1,0 +1,9 @@
+<switches>
+    <switch id="1" name="Rocky" age="38"/>
+    <switch id="2" name="Steve" age="50"/>
+    <switch id="3" name="Melinda" age="38"/>
+    <switch id="4" name="Melinda" age="38"/>
+    <switch id="5" name="Melinda" age="38"/>
+    <switch id="6" name="Melinda" age="38"/>
+    <switch id="7" name="Melinda" age="38"/>
+</switches>
